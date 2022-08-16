@@ -1,0 +1,101 @@
+body, html {
+    height:100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(36, 26, 26);
+}
+#calculator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 40px;
+    color:white;
+    border:1px solid black;
+    
+    
+}
+#calcbody {
+    background-color: rgb(70, 48, 57);
+    padding:4px;
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+}
+#discontainer {
+    background-color: rgba(22, 142, 146, 0.486);
+    height: 50px;
+    min-width: 100px;    
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding:0px 4px;
+    color:black;
+    border-radius: 10px;
+}
+#sign {
+    width:25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+}
+#display {
+    flex:1;
+    text-align: right;
+    color:black;
+}
+#operators1 {    
+    display:flex;
+    gap:5px;
+    justify-content: left;
+    text-align:center;
+}
+.buttons {
+    background-color: rgb(125, 128, 128);
+    cursor: pointer;
+    user-select: none;
+}
+.buttons, .cldigits {
+    width:60px;
+    height:60px;
+    border-radius: 10px;
+    box-shadow: 0 0 0.75rem rgb(36, 31, 31);
+    border:1px solid rgba(58, 47, 47, 0.616);
+    margin:1px;
+}
+.buttons:hover,.cldigits:hover {
+    border:1px solid rgb(47, 162, 182);
+}
+#numcontainer {
+    display:flex;
+    width:100%;
+    gap:5px;
+}
+#digits {
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+}
+.digirow {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
+}
+.cldigits {
+    background-color: rgb(33, 34, 34);
+    cursor: pointer;
+    user-select: none;
+}
+#operators2 {
+    display:flex;
+    flex-direction: column;
+    /* justify-content: left; */
+    align-items: center;
+    gap:5px
+}
