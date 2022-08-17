@@ -6,7 +6,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(36, 26, 26);
+    background-image: url('bk5.jpg');
+    background-color: rgba(102, 102, 102, 0.6);
+    background-blend-mode: lighten;
 }
 #calculator {
     display: flex;
@@ -17,15 +19,15 @@ body {
     font-size: 40px;
     color:white;
     border:1px solid black;
-    
-    
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;  
 }
 #calcbody {
     background-color: rgb(70, 48, 57);
-    padding:4px;
+    padding:10px;
     display:flex;
     flex-direction: column;
     gap:5px;
+    box-shadow: 1px 1px 3px 3px rgb(66, 57, 57),6px 6px 8px 5px rgb(0, 0, 0);
 }
 #discontainer {
     background-color: rgba(22, 142, 146, 0.486);
@@ -37,6 +39,11 @@ body {
     padding:0px 4px;
     color:black;
     border-radius: 10px;
+    box-shadow: 1px 1px 3px 3px rgb(138, 121, 121),2px 2px 4px 4px rgb(20, 14, 14);
+    border:2px solid rgb(58, 46, 46);
+    margin-bottom: 5px;
+    font-size: 28px;
+    font-family: 'Orbitron', sans-serif;
 }
 #sign {
     width:25px;
@@ -56,21 +63,14 @@ body {
     text-align:center;
 }
 .buttons {
-    background-color: rgb(125, 128, 128);
     cursor: pointer;
     user-select: none;
 }
 .buttons, .cldigits {
     width:60px;
     height:60px;
-    border-radius: 10px;
-    box-shadow: 0 0 0.75rem rgb(36, 31, 31);
-    border:1px solid rgba(58, 47, 47, 0.616);
-    margin:1px;
 }
-.buttons:hover,.cldigits:hover {
-    border:1px solid rgb(47, 162, 182);
-}
+
 #numcontainer {
     display:flex;
     width:100%;
@@ -87,15 +87,79 @@ body {
     align-items: center;
     gap:5px;
 }
-.cldigits {
-    background-color: rgb(33, 34, 34);
-    cursor: pointer;
-    user-select: none;
-}
+
 #operators2 {
     display:flex;
     flex-direction: column;
-    /* justify-content: left; */
     align-items: center;
     gap:5px
+}
+/* -------------------------- */
+.cldigits {
+    cursor: pointer;
+    user-select: none;
+}
+
+.inner {
+    width:50px;
+    height:50px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 2px 2px rgb(195, 201, 226), 8px 8px 5px 5px rgb(12, 15, 29);
+    background-color: rgb(31, 93, 117)
+}
+.inner:hover {
+    box-shadow: 2px 4px 2px 2px rgb(255, 250, 179), 8px 8px 5px 5px rgb(12, 15, 29);
+}
+.middle {
+    height:95%;
+    width:95%;
+    box-shadow: 1px 1px 16px 2px rgb(31, 32, 46);
+    border-radius: 10px;
+    text-align: center;
+}
+.inner:active,.innerC:active {
+    margin-top:5px;
+    margin-bottom: -2px;
+}
+/* -------------------------- */
+.innerC {
+    width:50px;
+    height:50px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 2px 2px rgb(195, 201, 226), 8px 8px 5px 5px rgb(10, 10, 10);
+    background-color: rgb(102, 111, 114)
+}
+.innerC:hover {
+    box-shadow: 2px 4px 2px 2px rgb(255, 250, 179), 8px 8px 5px 5px rgb(10, 10, 10);
+}
+.middleC {
+    height:95%;
+    width:95%;
+    box-shadow: 1px 1px 16px 2px rgb(73, 73, 73);
+    border-radius: 10px;
+    text-align: center;
+}
+/* -------------------------- */
+#header {
+    display:flex;
+    flex:0.5;
+}
+#footer {
+    display:flex;
+    flex-direction: column;
+    color:white;
+    width:50%;
+    flex:1;
+}
+#footerup {
+    flex:1;
+}
+#copyright {
+    background-color:rgb(165, 165, 165);
+    color:purple;
+    padding:2px 0px;
+    text-align: center;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    font-weight: 800;
 }

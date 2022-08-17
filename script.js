@@ -60,27 +60,27 @@ let point=document.querySelector("#point");
 let equal=document.querySelector("#equal");
 let sign=document.querySelector("#sign");
 
-divideb.addEventListener('click', operand);
-times.addEventListener('click', operand);
-minus.addEventListener('click', operand);
-plus.addEventListener('click', operand);
+divideb.addEventListener('click', ()=>{operand('divide')});
+times.addEventListener('click', ()=>{operand('times')});
+minus.addEventListener('click', ()=>{operand('minus')});
+plus.addEventListener('click', ()=>{operand('plus')});
 del.addEventListener('click', deldigit);
 clear.addEventListener('click', clearScreen);
-num7.addEventListener('click', addDigit);
-num8.addEventListener('click', addDigit);
-num9.addEventListener('click', addDigit);
-num1.addEventListener('click', addDigit);
-num2.addEventListener('click', addDigit);
-num3.addEventListener('click', addDigit);
-num4.addEventListener('click', addDigit);
-num5.addEventListener('click', addDigit);
-num6.addEventListener('click', addDigit);
-num0.addEventListener('click', addDigit);
-point.addEventListener('click', addDigit);
-equal.addEventListener('click', enter);
+num7.addEventListener('click', ()=>{addDigit('7')});
+num8.addEventListener('click', ()=>{addDigit('8')});
+num9.addEventListener('click', ()=>{addDigit('9')});
+num1.addEventListener('click', ()=>{addDigit('1')});
+num2.addEventListener('click', ()=>{addDigit('2')});
+num3.addEventListener('click', ()=>{addDigit('3')});
+num4.addEventListener('click', ()=>{addDigit('4')});
+num5.addEventListener('click', ()=>{addDigit('5')});
+num6.addEventListener('click', ()=>{addDigit('6')});
+num0.addEventListener('click', ()=>{addDigit('0')});
+point.addEventListener('click', ()=>{addDigit('.')});
+equal.addEventListener('click', ()=>{enter()});
 
 display.textContent="0";
-let maxdigits=10;
+let maxdigits=9;
 
 function reset() {
     operation.left="";
@@ -93,42 +93,66 @@ function reset() {
 }
 
 function operand(e) {
-    switch (e.target.id) {
+    switch (e) {
         case 'divide':
-            if(operation.result) {
+            if(operation.result && sign.textContent==="=") {
                 let temp=display.textContent;
                 reset();
                 operation.left=temp;
+            }
+            else if(operation.right) {                
+                enter();
+                operation.left=String(operation.result);
+                operation.right='';
+                operation.result=0;
             }
             operation.hasFirst=true;
             operation.operand='divide';
             showDigits();
             break;
         case 'times':
-            if(operation.result) {
+            if(operation.result && sign.textContent==="=") {
                 let temp=display.textContent;
                 reset();
                 operation.left=temp;
+            }
+            else if(operation.right) {
+                enter();
+                operation.left=String(operation.result);
+                operation.right='';
+                operation.result=0;
             }
             operation.hasFirst=true;
             operation.operand='times';
             showDigits();
             break;
         case 'minus':
-            if(operation.result) {
+            if(operation.result && sign.textContent==="=") {
                 let temp=display.textContent;
                 reset();
                 operation.left=temp;
+            }
+            else if(operation.right) {
+                enter();
+                operation.left=String(operation.result);
+                operation.right='';
+                operation.result=0;
             }
             operation.hasFirst=true;
             operation.operand='minus';
             showDigits();
             break;
         case 'plus':
-            if(operation.result) {
+            if(operation.result && sign.textContent==="=") {
                 let temp=display.textContent;
                 reset();
                 operation.left=temp;
+            }
+            else if(operation.right) {
+                enter();
+                operation.left=String(operation.result);
+                operation.right='';
+                operation.result=0;
             }
             operation.hasFirst=true;
             operation.operand='plus';
@@ -143,12 +167,11 @@ function clearScreen() {
 
 function addDigit(e) {
     if(!operation.hasFirst) {
-        if(e.target.id==='point'){if(!operation.left.includes(".") && operation.left.length<maxdigits)operation.left+=".";}
-        else if(operation.left.length<maxdigits)operation.left+=e.target.id.substr(3,1);
-
+        if(e==='.'){if(!operation.left.includes(".") && operation.left.length<maxdigits)operation.left+=".";}
+        else if(operation.left.length<maxdigits)operation.left+=e;
     }
     else {
-        if(e.target.id==='point'){
+        if(e==='.'){
             if(operation.result) {
                 reset();
                 operation.left+=".";
@@ -157,14 +180,14 @@ function addDigit(e) {
         }
         else if(operation.result) {
             reset();
-            operation.left+=e.target.id.substr(3,1);
+            operation.left+=e;
         }
-        else if(operation.right.length<maxdigits)operation.right+=e.target.id.substr(3,1);
+        else if(operation.right.length<maxdigits)operation.right+=e;
     }
     showDigits();
 }
 
-function enter() {
+function enter(thisSign="=") {
     let left=Number(operation.left);
     let right=Number(operation.right);
     let operand=operation.operand;
@@ -172,15 +195,14 @@ function enter() {
         return;
     }
     let answer=operate(left,operand,right);
-    if(String(answer).length>maxdigits)
-        {
+    if(String(answer).length>maxdigits || answer===Infinity){        
             reset();
             display.textContent='ERROR';
             return;
         }
     operation.result=answer;
     display.textContent=answer;
-    sign.textContent="=";
+    sign.textContent=thisSign;
     
 }
 function deldigit() {
@@ -195,7 +217,10 @@ function deldigit() {
 }
 
 function showDigits() {
-    if(!operation.hasFirst || operation.right==='')display.textContent=operation.left;
+    if(!operation.hasFirst)display.textContent=operation.left;
+    else if(operation.result) {
+        display.textContent=operation.result;
+    }
     else display.textContent=operation.right;
     if(!operation.operand!=='') {
         switch(operation.operand) {
@@ -212,7 +237,4 @@ function showDigits() {
                 sign.textContent='÷';
         }
     }
-
 }
-
-
