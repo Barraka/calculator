@@ -6,9 +6,10 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('bk5.jpg');
+    background-image: url('bk6.jpg');
     background-color: rgba(102, 102, 102, 0.6);
     background-blend-mode: lighten;
+    margin:0px;
 }
 #calculator {
     display: flex;
@@ -143,6 +144,7 @@ body {
 #header {
     display:flex;
     flex:0.5;
+    /* height:20%; */
 }
 #footer {
     display:flex;
@@ -152,6 +154,7 @@ body {
     flex:1;
 }
 #footerup {
+    display:flex;
     flex:1;
 }
 #copyright {
